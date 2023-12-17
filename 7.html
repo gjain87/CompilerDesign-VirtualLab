@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous" />
+  <link rel="stylesheet" href="style.css" />
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
+    crossorigin="anonymous"></script>
+
+  <title>Compiler Lab Assignment</title>
+</head>
+
+<body>
+  <header>
+    <nav class="navbar">
+      <img class="logo" src="925718412s.jpg"
+        style="width:1000px;height: 150px;margin-left: auto;margin-right: auto;">
+    </nav>
+  </header>
+  <div class="container" style="
+        width: 50%;
+        margin-left: auto;
+        margin-right: auto;
+        margin-top: 50px;
+      ">
+    <div class="card" style="margin-top: 10px;margin-bottom: 10px;">
+      <div class="card-header">AIM -</div>
+      <div class="card-body">
+        <p class="card-text">
+          Lexical Analyser to check validating operator.
+        </p>
+      </div>
+    </div>
+    <div class="card" style="margin-top: 30px;margin-bottom: 30px;">
+      <div class="card-header">Theory -</div>
+      <div class="card-body">
+        <p class="card-text">
+          In computer programming, an operator is a symbol that tells the compiler to perform specific mathematical or
+          logical functions.
+        </p>
+      </div>
+    </div>
+    <div class="card" style="margin-top: 30px;margin-bottom: 30px;">
+      <div class="card-header">Procedure -</div>
+      <div class="card-body">
+        <p class="card-text">
+          There are different types of operators in a programming language to perform fundamental and logical
+          operations.
+          They are classified as follows -
+        <ul>
+          <li>
+            Arithmetic Operators &nbsp; [+&nbsp;,&nbsp;-&nbsp;,&nbsp;*&nbsp;,&nbsp;/&nbsp;,&nbsp;%&nbsp; ]
+          </li>
+          <li>
+            Relational Operators &nbsp; [&nbsp;==&nbsp;,&nbsp; !=&nbsp;>,&nbsp;&nbsp;<&nbsp;,&nbsp;>=&nbsp;,&nbsp;
+              <=&nbsp;] </li>
+          <li>
+            Logical Operators &nbsp; [&nbsp;&&&nbsp;,&nbsp;||&nbsp;,&nbsp;!&nbsp;]
+          </li>
+          <li>
+            Bitwise Operators &nbsp; [&nbsp;&&nbsp;,&nbsp;|&nbsp;,&nbsp;^&nbsp;]
+          </li>
+        </ul>
+      
+        </p>
+        <p class="card-text">
+          Therefore we need to check the input string for every possible combination of operators and then categories it
+          under the different categories.
+        </p>
+      </div>
+    </div>
+    <div class="card" style="margin-top: 10px; margin-bottom: 10px">
+      <div class="card-header">Stimulation -</div>
+      <div class="card-body">
+        <h5 class="card-title">Input String:</h5>
+        <br>
+          <input type="text" placeholder="Enter Text !!" id="myInput">
+          <button type="button" onclick="getresult()">Submit</button></br>
+          </br>
+          </br>
+          </br>
+        <div id="resDiv">
+          </p>
+          <script>
+            function getresult() {
+              var inputText = document.getElementById("myInput").value;
+              let myDiv = document.getElementById("resDiv");
+              if (inputText[0] == '/') {
+                if (inputText[1]) {
+                  myDiv.innerText = "Invalid operator";
+                }
+                else {
+                  myDiv.innerText = "Division Operator";
+                }
+              }
+              else if (inputText[0] == '+') {
+                if (inputText[1] == '+' && inputText.length == 2) {
+                  myDiv.innerText = "Increament operator";
+                }
+                else if (inputText.length >= 2) {
+                  myDiv.innerText = "Invalid operator";
+                }
+                else {
+                  myDiv.innerText = "Addition operator";
+                }
+              }
+              else if (inputText[0] == '-') {
+                if (inputText[1] == '-' && inputText.length == 2) {
+                  myDiv.innerText = "Dectrement operator";
+                }
+                else if (inputText.length >= 2) {
+                  myDiv.innerText = "Invalid operator";
+                }
+                else {
+                  myDiv.innerText = "Subtraction operator";
+                }
+
+              }
+              else if (inputText[0] == '%') {
+                if (inputText[1]) {
+                  myDiv.innerText = "Invalid operator";
+                }
+                else {
+                  myDiv.innerText = "Modulus operator";
+                }
+              }
+              else if (inputText[0] == '*') {
+                if (inputText[1]) {
+                  myDiv.innerText = "Invalid operator";
+                }
+                else {
+                  myDiv.innerText = "Multiplication operator";
+                }
+              }
+              else if (inputText[0] == '=' && inputText[1] == '=' && inputText.length == 2) {
+                myDiv.innerText = "Equal to operator";
+              }
+              else if (inputText[0] == '=' && inputText.length == 1) {
+                myDiv.innerText = "Assignment operator";
+              }
+              else if (inputText[0] == '!' && inputText.length == 1) {
+                myDiv.innerText = "Logical Not operator";
+              }
+              else if (inputText[0] == '!' && inputText[1] == '=' && inputText.length == 2) {
+                myDiv.innerText = "Not Equal to operator";
+              }
+              else if (inputText[0] == '>' && inputText.length == 1) {
+                myDiv.innerText = "Greater than operator";
+              }
+              else if (inputText[0] == '>' && inputText[1] == '=' && inputText.length == 2) {
+                myDiv.innerText = "Greater than Equal to operator";
+              }
+              else if (inputText[0] == '<' && inputText.length == 1) {
+                myDiv.innerText = "Less than operator";
+              }
+              else if (inputText[0] == '>' && inputText.length == 1) {
+                myDiv.innerText = "Less than equal to operator";
+              }
+              else if (inputText[0] == '&' && inputText[1] == '&' && inputText.length == 2) {
+                myDiv.innerText = "Logical and operator";
+              }
+              else if (inputText[0] == '|' && inputText[1] == '|' && inputText.length == 2) {
+                myDiv.innerText = "Logical or operator";
+              }
+              else if (inputText[0] == '&' && inputText.length == 1) {
+                myDiv.innerText = "Binary and operator";
+              }
+              else if (inputText[0] == '|' && inputText.length == 1) {
+                myDiv.innerText = "Binary or operator";
+              }
+              else if (inputText[0] == '^' && inputText.length == 1) {
+                myDiv.innerText = "Binary or operator";
+              }
+              else if (inputText[0] == '~' && inputText.length == 1) {
+                myDiv.innerText = "Binary one complement";
+              }
+              else if (inputText[0] == '<' && inputText[1] == '<' && inputText.length == 2) {
+                myDiv.innerText = "Binary left shieft operator";
+              }
+              else if (inputText[0] == '>' && inputText[1] == '>' && inputText.length == 2) {
+                myDiv.innerText = "Binary right shieft operator";
+              }
+              else {
+                myDiv.innerText = "Invalid operator";
+              }
+
+            }
+          </script>
+        </div>
+      </div>
+  </div>
+      <div class="card" style="margin-top: 30px;margin-bottom: 30px;">
+        <div class="card-header">References -</div>
+        <div class="card-body">
+            <p class="card-text">
+             <ul>
+                 <li><h5> &nbsp;Compilers - Principles , Techniques and Tools</h5>
+                </li>
+                <li class="side-text"> &nbsp;&nbsp;- Jeffrey D. Ullman , Alfred V. Aho , Monica S. Lam ,  Ravi Sethi</li>
+                <br>
+                <li><h5>Online Reference -</h5></li>
+                <li class="side-text">
+                    - &nbsp; www.google.com
+                </li>
+                <li class="side-text">
+                    - &nbsp; www.geeksforgeeks.org
+                </li>
+                <li class="side-text">
+                  - &nbsp; www.javatpoint.com
+                </li>
+             </ul>
+            </p>
+        </div>
+    </div>
+    </div>
+
+</body>
+
+</html>

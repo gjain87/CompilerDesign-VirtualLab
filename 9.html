@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous" />
+    <link rel="stylesheet" href="style.css" />
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
+        crossorigin="anonymous"></script>
+
+    <title>Compiler Lab Assignment</title>
+</head>
+
+<body>
+    <header>
+        <nav class="navbar">
+            <img class="logo" src="925718412s.jpg"
+                style="width:1000px;height: 150px;margin-left: auto;margin-right: auto;">
+        </nav>
+        </nav>
+    </header>
+    <div class="container" style="
+        width: 50%;
+        margin-left: auto;
+        margin-right: auto;
+        margin-top: 50px;
+      ">
+        <div class="card" style="margin-top: 30px;margin-bottom: 30px;">
+            <div class="card-header">AIM -</div>
+            <div class="card-body">
+                <p class="card-text">
+                    To implement a Lexical Analyser.
+                </p>
+            </div>
+        </div>
+        <div class="card" style="margin-top: 30px;margin-bottom: 30px;">
+            <div class="card-header">Theory -</div>
+            <div class="card-body">
+                <p class="card-text">
+                    A lexical analyser is the firse phase of a compiler which is also known as a scanner . It converts
+                    the high level program into stream of tokens according to the rules signified by the grammar of the
+                    language.It also removes the white space and comments from a program.
+
+                </p>
+            </div>
+        </div>
+        <div class="card" style="margin-top: 30px;margin-bottom: 30px;">
+            <div class="card-header">Procedure -</div>
+            <div class="card-body">
+                <p class="card-text">
+                    Tokens are defined by regular expressions which are constructed by the lexical analyser.
+                    A lexeme is a sequence of characters in the source program that matches the pattern for a token & is
+                    identified by the lexical analyser as the instance of the token.
+                </p>
+            </div>
+        </div>
+        <div class="card" style="margin-top: 10px; margin-bottom: 10px">
+
+            <div class="card-header">Stimulation -</div>
+            <div class="card-body">
+                <h5 class="card-title">Input String :</h5>
+                <br>
+                <p class="card-text">
+                    <input type="text" placeholder="Enter Text !!" id="myInput">
+                    <br>
+                    <br>
+                    <button type="button" onclick="getresult()">Submit</button></br>
+
+                </p>
+                <div id="resDiv">
+
+                <script>
+                        function getresult() {
+                            let c=0,op=0,ide=0,kyy=0,di=0;
+            var inputText = document.getElementById("myInput").value;
+            let myDiv = document.getElementById("resDiv");
+            delimiters = ['', '+', '-', '*', '/', ',', ';', '>', '<', '=', '(', ')', '[', ']', '{', '}']
+
+        const operators = ['+', '-', '/', '*', '>', '<', '=']
+        const digits = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
+        const keywords = ['if', 'else', 'while', 'do', 'break', 'continue', 'int', 'double', 'float', 'return', 'char', 'case', 'sizeof', 'long', 'short', 'typedef', 'switch', 'unsigned', 'void', 'static', 'struct', 'goto']
+
+function isValidOperator(string) {
+    if (operators.includes(string)) {
+        // myDiv.innerText = `${string} is a Valid Operator`;
+        console.log(`${string} IS A VALID OPERATOR`)
+        op++;
+        c++;
+        return true;
+    }
+}
+
+function isValidIdentifier(string) {
+    const firstCharacter = string[0]
+    if (!(firstCharacter >= '0' && firstCharacter) <= '9' && !delimiters.includes(firstCharacter) && string.length < 2) {
+        // myDiv.innerText = `${string} is a valid identifier`;
+        console.log(`${string} IS A VALID IDENTIFIER`)
+        c++;
+        ide++;
+        return true
+    } else {
+        // myDiv.innerText = `${string} is a not a valid identifier`;
+        console.log(`${string} IS NOT A VALID IDENTIFIER`)
+        c++;
+        ide++;
+        return false
+    }
+}
+
+function isKeyword(string) {
+    if (keywords.includes(string)) {
+        // myDiv.innerText = `${string} is a valid keyword`;
+        console.log(`${string} IS A VALID KEYWORD`)
+        c++;
+        kyy++;
+        return true
+    }
+}
+
+function isInteger(string) {
+    if (!isNaN(string)) {
+        // myDiv.innerText = `${string} is a valid integer`;
+        console.log(`${string} IS A VALID INTEGER`)
+        c++;
+        di++;
+        return true
+    }
+}
+const expression = inputText;
+const tokens = expression.split(new RegExp('([-+(),*/><={}? ;])', 'g'));
+const cleanedTokens = tokens.filter((token) => token !== ' ').filter((token) => token != '')
+
+
+cleanedTokens.forEach((token) => {
+
+    if (isValidOperator(token)) { } else if (isKeyword(token)) { } else if (isInteger(token)) { } else if (isValidIdentifier(token)) { } else { }
+})
+myDiv.innerText = `total tokens: ${c} ,\n total operators: ${op},\n total keywords: ${kyy},\n total integers: ${di},\n total identifiers: ${ide}`;
+
+        }
+        
+             </script>
+                </div>
+
+            </div>
+        </div>
+        <div class="card" style="margin-top: 30px;margin-bottom: 30px;">
+            <div class="card-header">References -</div>
+            <div class="card-body">
+                <p class="card-text">
+                <ul>
+                    <li>
+                        <h5> &nbsp;Compilers - Principles , Techniques and Tools</h5>
+                    </li>
+                    <li class="side-text"> &nbsp;&nbsp;- Jeffrey D. Ullman , Alfred V. Aho , Monica S. Lam , Ravi Sethi
+                    </li>
+                    <br>
+                    <li>
+                        <h5>Online Reference -</h5>
+                    </li>
+                    <li class="side-text">
+                        - &nbsp;www.google.com
+                    </li>
+                    <li class="side-text">
+                        - &nbsp;www.geeksforgeeks.org
+                    </li>
+                </ul>
+                </p>
+            </div>
+        </div>
+    </div>
+
+</body>
+
+</html>
